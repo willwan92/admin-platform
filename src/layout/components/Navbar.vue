@@ -5,25 +5,25 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
-      <el-dropdown class="avatar-container" trigger="click">
+      <el-dropdown class="avatar-container" trigger="hover">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar"> -->
+          <i class="el-icon-user-solid user-avatar" />
+          <span>admin</span>
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/">
-            <el-dropdown-item>
-              Home
-            </el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">Log Out</span>
+          <el-dropdown-item @click.native="logout">
+            退出
+          </el-dropdown-item>
+          <el-dropdown-item>
+            重启
+          </el-dropdown-item>
+          <el-dropdown-item>
+            保存配置
+          </el-dropdown-item>
+          <el-dropdown-item>
+            导出配置
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -117,20 +117,15 @@ export default {
       .avatar-wrapper {
         margin-top: 5px;
         position: relative;
+        cursor: pointer;
 
         .user-avatar {
           cursor: pointer;
-          width: 40px;
-          height: 40px;
+          display: inline-block;
+          font-size: 30px;
+          width: 30px;
+          height: 30px;
           border-radius: 10px;
-        }
-
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
         }
       }
     }
