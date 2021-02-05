@@ -13,17 +13,17 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <el-dropdown-item @click.native="logout">
-            退出
-          </el-dropdown-item>
           <el-dropdown-item>
-            重启
+            重启系统
           </el-dropdown-item>
           <el-dropdown-item>
             保存配置
           </el-dropdown-item>
           <el-dropdown-item>
             导出配置
+          </el-dropdown-item>
+          <el-dropdown-item divided @click.native="logout">
+            注销登录
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
