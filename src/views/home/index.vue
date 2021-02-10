@@ -4,19 +4,19 @@
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="">
           <div class="progress-item">
-            <span>Vue</span>
+            <span>CPU</span>
             <el-progress :percentage="70" />
           </div>
           <div class="progress-item">
-            <span>JavaScript</span>
+            <span>内存</span>
             <el-progress :percentage="18" />
           </div>
           <div class="progress-item">
-            <span>CSS</span>
+            <span>系统空间</span>
             <el-progress :percentage="12" />
           </div>
           <div class="progress-item">
-            <span>ESLint</span>
+            <span>存储空间</span>
             <el-progress :percentage="100" status="success" />
           </div>
         </div>
