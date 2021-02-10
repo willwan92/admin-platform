@@ -22,3 +22,13 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function getInterfaceIp() {
+  return request({
+    url: '/cgi-bin/webui',
+    method: 'get',
+    params: { 
+      op: 'webui_fwips_show'
+    }
+  })
+}
