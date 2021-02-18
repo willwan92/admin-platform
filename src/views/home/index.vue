@@ -44,20 +44,23 @@
         <!-- <box-card /> -->
       </el-col>
     </el-row>
-     
   </div>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import { UserModule } from '@/store/modules/user'
 
-export default {
-  name: 'Home',
-  computed: {
-    ...mapGetters([
-      'name',
-      'roles'
-    ])
+@Component({
+  name: 'Home'
+})
+export default class extends Vue {
+  get name() {
+    return UserModule.name
+  }
+
+  get roles() {
+    return UserModule.roles
   }
 }
 </script>
