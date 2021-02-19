@@ -76,7 +76,6 @@ import { Dictionary } from 'vue-router/types/router'
 import { Form as ElForm, Input } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 import { isValidUsername } from '@/utils/validate'
-import { getInterfaceIp } from '@/api/users'
 
 @Component({
   name: 'Login'
@@ -125,21 +124,12 @@ export default class extends Vue {
     }
   }
 
-  created() {
-    this.getInterfaceIp()
-  }
-
   mounted() {
     if (this.loginForm.username === '') {
       (this.$refs.username as Input).focus()
     } else if (this.loginForm.password === '') {
       (this.$refs.password as Input).focus()
     }
-  }
-
-  private async getInterfaceIp() {
-    const { data } = await getInterfaceIp()
-    console.log(data)
   }
 
   private showPwd() {
