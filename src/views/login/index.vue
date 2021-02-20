@@ -54,7 +54,6 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-import { getInterfaceIp } from '@/api/user'
 
 export default {
   name: 'Login',
@@ -74,7 +73,6 @@ export default {
       }
     }
     return {
-      message: '',
       loginForm: {
         username: 'admin',
         password: '111111'
@@ -95,11 +93,6 @@ export default {
       },
       immediate: true
     }
-  },
-  created() {
-    getInterfaceIp().then(res => {
-      this.message = res.message
-    })
   },
   methods: {
     showPwd() {

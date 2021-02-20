@@ -27,7 +27,7 @@ export function getInterfaceIp() {
   return request({
     url: '/cgi-bin/webui',
     method: 'get',
-    params: { 
+    params: {
       op: 'webui_fwips_show'
     }
   })
