@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <el-row :gutter="32">
+    <el-row :gutter="24" class="row">
       <el-col :xs="24" :sm="24" :lg="12">
         <el-card>
           <div slot="header">
@@ -52,15 +52,16 @@
       </el-col>
     </el-row>
 
-    <el-row :gutter="8">
-      <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">
-        <!-- <transaction-table /> -->
+    <el-row :gutter="24">
+      <el-col :xs="24" :sm="24" :lg="12">
+        <el-card header="系统事件">
+          <event-table class="table-in-card" />
+        </el-card>
       </el-col>
-      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
-        <!-- <todo-list /> -->
-      </el-col>
-      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
-        <!-- <box-card /> -->
+      <el-col :xs="24" :sm="24" :lg="12">
+        <el-card  header="网络接口">
+          <!-- <event-table class="table-in-card" /> -->
+        </el-card>
       </el-col>
     </el-row>
   </div>
@@ -68,12 +69,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import EventTable from './components/EventTable'
 import Descriptions from '@/components/Descriptions'
 const DescriptionItem = Descriptions.Item
 
 export default {
   name: 'Home',
   components: {
+    EventTable,
     Descriptions,
     DescriptionItem
   },
@@ -110,6 +113,12 @@ export default {
 .home {
   &-container {
     margin: 30px;
+    .row {
+      margin-bottom: 24px;
+      .table-in-card {
+        margin-top: 40rpx;
+      }
+    }
     .progress-item {
       margin-bottom: 12px;
       font-size: 14px;
