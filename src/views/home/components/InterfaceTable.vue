@@ -1,18 +1,15 @@
 <template>
-  <el-table :data="list" style="width: 100%;" :show-header="false">
-    <el-table-column label="" min-width="200">
-      <template slot-scope="scope">
-        {{ `【${scope.row.usename}】${scope.row.msg}` }}
-      </template>
-    </el-table-column>
-    <el-table-column label="" width="100" align="center">
+  <el-table :data="list" class="event-table" :show-header="false">
+    <el-table-column label="接口名称" prop="if_name">
       <template slot-scope="{row}">
-        <el-tag :type="row.level">
-          {{ row.level }}
-        </el-tag>
+        <i class="iconfont iconinterface-using"></i>
+        {{ `${row.if_name}（${row.status}）` }}
       </template>
     </el-table-column>
-    <el-table-column label="" width="100" align="center" prop="time">
+    <el-table-column label="接口速率" min-width="200" align="right">
+      <template slot-scope="scope">
+        {{ `发送速率：${scope.row.sent}；接收速率：${scope.row.received}` }}
+      </template>
     </el-table-column>
   </el-table>
 </template>
@@ -24,29 +21,41 @@ data() {
     return {
       list: [
         {
-          time: '2020-12-21 12:12:23',
-          level: 'danger',
-          msg: '特斯拉去年研发支出接近15亿美元 占营收比例已不到5%',
-          usename: 'admin'
+          status: '已连接',
+          received: '15bps',
+          sent: '103bps',
+          if_name: 'ge1'
         },
         {
-          time: '2020-12-21 12:12:23',
-          level: 'danger',
-          msg: '特斯拉去年研发支出接近15亿美元 占营收比例已不到5%',
-          usename: 'admin'
+          status: '已连接',
+          received: '15bps',
+          sent: '103bps',
+          if_name: 'ge2'
         },
         {
-          time: '2020-12-21 12:12:23',
-          level: 'danger',
-          msg: '特斯拉去年研发支出接近15亿美元 占营收比例已不到5%',
-          usename: 'admin'
+          status: '未连接',
+          received: '15bps',
+          sent: '103bps',
+          if_name: 'ge3'
         },
         {
-          time: '2020-12-21 12:12:23',
-          level: 'success',
-          msg: '特斯拉去年研发支出接近15亿美元 占营收比例已不到5%',
-          usename: 'admin'
-        }
+          status: '未连接',
+          received: '15bps',
+          sent: '103bps',
+          if_name: 'ge4'
+        },
+        {
+          status: '已连接',
+          received: '15bps',
+          sent: '103bps',
+          if_name: 'ge5'
+        },
+        {
+          status: '未连接',
+          received: '15bps',
+          sent: '103bps',
+          if_name: 'ge6'
+        },
       ]
     }
   },
@@ -63,6 +72,13 @@ data() {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.event-table {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  &:hover {
+    overflow: auto;
+  }
+}
 </style>

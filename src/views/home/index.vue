@@ -5,7 +5,7 @@
         <el-card>
           <div slot="header">
             <span>系统资源</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
+            <el-button style="float: right; padding: 3px 0" type="text">查看更多</el-button>
           </div>
           <div class="progress-item">
             <span class="label">CPU：</span>
@@ -29,7 +29,6 @@
         <el-card>
           <div slot="header">
             <span>设备信息</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
           </div>
           <descriptions :col="2">
             <description-item term="产品名称">
@@ -54,13 +53,21 @@
 
     <el-row :gutter="24">
       <el-col :xs="24" :sm="24" :lg="12">
-        <el-card header="系统事件">
+        <el-card header="">
+          <div slot="header">
+            <span>系统事件</span>
+            <el-button style="float: right; padding: 3px 0" type="text">查看更多</el-button>
+          </div>
           <event-table class="table-in-card" />
         </el-card>
       </el-col>
       <el-col :xs="24" :sm="24" :lg="12">
-        <el-card  header="网络接口">
-          <!-- <event-table class="table-in-card" /> -->
+        <el-card>
+          <div slot="header">
+            <span>网络接口</span>
+            <el-button style="float: right; padding: 3px 0" type="text">查看更多</el-button>
+          </div>
+          <interface-table class="table-in-card" />
         </el-card>
       </el-col>
     </el-row>
@@ -70,6 +77,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import EventTable from './components/EventTable'
+import InterfaceTable from './components/InterfaceTable'
 import Descriptions from '@/components/Descriptions'
 const DescriptionItem = Descriptions.Item
 
@@ -77,6 +85,7 @@ export default {
   name: 'Home',
   components: {
     EventTable,
+    InterfaceTable,
     Descriptions,
     DescriptionItem
   },

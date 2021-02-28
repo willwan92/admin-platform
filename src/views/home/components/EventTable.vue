@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="list" style="width: 100%;" :show-header="false">
+  <el-table :data="list" class="event-table" :show-header="false">
     <el-table-column label="描述" min-width="200">
       <template slot-scope="scope">
         {{ `【${scope.row.usename}】${scope.row.msg}` }}
@@ -43,6 +43,18 @@ data() {
         },
         {
           time: '2020-12-21 12:12:23',
+          level: 'danger',
+          msg: '特斯拉去年研发支出接近15亿美元 占营收比例已不到5%',
+          usename: 'admin'
+        },
+        {
+          time: '2020-12-21 12:12:23',
+          level: 'danger',
+          msg: '特斯拉去年研发支出接近15亿美元 占营收比例已不到5%',
+          usename: 'admin'
+        },
+        {
+          time: '2020-12-21 12:12:23',
           level: 'success',
           msg: '特斯拉去年研发支出接近15亿美元 占营收比例已不到5%',
           usename: 'admin'
@@ -63,6 +75,13 @@ data() {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.event-table {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  &:hover {
+    overflow: auto;
+  }
+}
 </style>
