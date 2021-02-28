@@ -17,7 +17,7 @@
 <script>
 // import { transactionList } from '@/api/remote-search'
 export default {
-data() {
+  data() {
     return {
       list: [
         {
@@ -55,7 +55,7 @@ data() {
           received: '15bps',
           sent: '103bps',
           if_name: 'ge6'
-        },
+        }
       ]
     }
   },

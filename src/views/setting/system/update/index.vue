@@ -1,5 +1,5 @@
 <template>
   <div style="padding:30px;">
-    <el-alert :closable="false" title="menu 2" />
+    软件升级
   </div>
 </template>

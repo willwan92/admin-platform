@@ -54,41 +54,6 @@ export const constantRoutes = [
       meta: { title: '首页', icon: 'home' }
     }]
   }
-
-  // {
-  //   path: '/example',
-  //   component: Layout,
-  //   redirect: '/example/table',
-  //   name: 'Example',
-  //   meta: { title: 'Example', icon: 'el-icon-s-help' },
-  //   children: [
-  //     {
-  //       path: 'table',
-  //       name: 'Table',
-  //       component: () => import('@/views/table/index'),
-  //       meta: { title: 'Table', icon: 'table' }
-  //     },
-  //     {
-  //       path: 'tree',
-  //       name: 'Tree',
-  //       component: () => import('@/views/tree/index'),
-  //       meta: { title: 'Tree', icon: 'tree' }
-  //     }
-  //   ]
-  // },
-
-  // {
-  //   path: '/form',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'Form',
-  //       component: () => import('@/views/form/index'),
-  //       meta: { title: 'Form', icon: 'form' }
-  //     }
-  //   ]
-  // }
 ]
 
 /**
@@ -97,70 +62,90 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
   {
-    path: '/nested',
+    name: 'setting',
+    path: '/setting',
+    redirect: '/setting/system',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
     meta: {
       title: '系统设置',
-      icon: 'nested'
+      icon: 'el-icon-setting'
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
+        name: 'system',
+        path: 'system',
+        component: () => import('@/views/setting/system'),
+        meta: { title: '系统设置' },
         children: [
           {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            name: 'time',
+            path: 'time',
+            component: () => import('@/views/setting/system/time'),
+            meta: { title: '时间管理' }
           },
           {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
+            name: 'conf',
+            path: 'conf',
+            component: () => import('@/views/setting/system/conf'),
+            meta: { title: '配置管理' }
           },
           {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
+            name: 'update',
+            path: 'update',
+            component: () => import('@/views/setting/system/update'),
+            meta: { title: '软件升级' }
+          },
+          {
+            name: 'auth',
+            path: 'auth',
+            component: () => import('@/views/setting/system/auth'),
+            meta: { title: '授权管理' }
+          },
+          {
+            name: 'log',
+            path: 'log',
+            component: () => import('@/views/setting/system/log'),
+            meta: { title: '日志管理' }
+          },
+          {
+            name: 'host',
+            path: 'host',
+            component: () => import('@/views/setting/system/host'),
+            meta: { title: '主机管理' }
           }
         ]
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: '系统配置' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: '网络设置', icon: 'link' }
+        name: 'management',
+        path: 'management',
+        component: () => import('@/views/setting/management'),
+        meta: { title: '管理配置' },
+        children: [
+          {
+            name: 'method',
+            path: 'method',
+            component: () => import('@/views/setting/management/method'),
+            meta: { title: '管理方式' }
+          },
+          {
+            name: 'creditable-host',
+            path: 'creditable-host',
+            component: () => import('@/views/setting/management/creditable-host'),
+            meta: { title: '可信主机' }
+          },
+          {
+            name: 'account',
+            path: 'account',
+            component: () => import('@/views/setting/management/account'),
+            meta: { title: '管理员账号' }
+          },
+          {
+            name: 'snmp',
+            path: 'snmp',
+            component: () => import('@/views/setting/management/snmp'),
+            meta: { title: 'SNMP配置' }
+          }
+        ]
       }
     ]
   },
