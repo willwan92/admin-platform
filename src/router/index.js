@@ -5,6 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
+import BlankLayout from '@/layout/BlankLayout'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -43,17 +44,8 @@ export const constantRoutes = [
     hidden: true
   },
 
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/home',
-    children: [{
-      path: 'home',
-      name: 'Home',
-      component: () => import('@/views/home/index'),
-      meta: { title: '首页', icon: 'home' }
-    }]
-  }
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
 /**
@@ -62,96 +54,108 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
   {
-    name: 'setting',
-    path: '/setting',
-    redirect: '/setting/system',
+    path: '/',
     component: Layout,
-    meta: {
-      title: '系统设置',
-      icon: 'el-icon-setting'
-    },
+    redirect: '/home',
     children: [
       {
-        name: 'system',
-        path: 'system',
-        component: () => import('@/views/setting/system'),
-        meta: { title: '系统设置' },
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/views/home/index'),
+        meta: { title: '首页', icon: 'home' }
+      },
+      {
+        name: 'setting',
+        path: '/setting',
+        component: BlankLayout,
+        redirect: '/setting/system',
+        meta: {
+          title: '系统设置',
+          icon: 'el-icon-setting'
+        },
         children: [
           {
-            name: 'time',
-            path: 'time',
-            component: () => import('@/views/setting/system/time'),
-            meta: { title: '时间管理' }
+            name: 'system',
+            path: 'system',
+            redirect: '/setting/system/time',
+            component: BlankLayout,
+            meta: { title: '系统设置' },
+            children: [
+              {
+                name: 'time',
+                path: 'time',
+                component: () => import('@/views/setting/system/time'),
+                meta: { title: '时间管理' }
+              },
+              {
+                name: 'conf',
+                path: 'conf',
+                component: () => import('@/views/setting/system/conf'),
+                meta: { title: '配置管理' }
+              },
+              {
+                name: 'update',
+                path: 'update',
+                component: () => import('@/views/setting/system/update'),
+                meta: { title: '软件升级' }
+              },
+              {
+                name: 'auth',
+                path: 'auth',
+                component: () => import('@/views/setting/system/auth'),
+                meta: { title: '授权管理' }
+              },
+              {
+                name: 'log',
+                path: 'log',
+                component: () => import('@/views/setting/system/log'),
+                meta: { title: '日志管理' }
+              },
+              {
+                name: 'host',
+                path: 'host',
+                component: () => import('@/views/setting/system/host'),
+                meta: { title: '主机管理' }
+              }
+            ]
           },
           {
-            name: 'conf',
-            path: 'conf',
-            component: () => import('@/views/setting/system/conf'),
-            meta: { title: '配置管理' }
-          },
-          {
-            name: 'update',
-            path: 'update',
-            component: () => import('@/views/setting/system/update'),
-            meta: { title: '软件升级' }
-          },
-          {
-            name: 'auth',
-            path: 'auth',
-            component: () => import('@/views/setting/system/auth'),
-            meta: { title: '授权管理' }
-          },
-          {
-            name: 'log',
-            path: 'log',
-            component: () => import('@/views/setting/system/log'),
-            meta: { title: '日志管理' }
-          },
-          {
-            name: 'host',
-            path: 'host',
-            component: () => import('@/views/setting/system/host'),
-            meta: { title: '主机管理' }
+            name: 'management',
+            path: 'management',
+            component: BlankLayout,
+            redirect: '/setting/management/method',
+            meta: { title: '管理配置' },
+            children: [
+              {
+                name: 'method',
+                path: 'method',
+                component: () => import('@/views/setting/management/method'),
+                meta: { title: '管理方式' }
+              },
+              {
+                name: 'creditable-host',
+                path: 'creditable-host',
+                component: () => import('@/views/setting/management/creditable-host'),
+                meta: { title: '可信主机' }
+              },
+              {
+                name: 'account',
+                path: 'account',
+                component: () => import('@/views/setting/management/account'),
+                meta: { title: '管理员账号' }
+              },
+              {
+                name: 'snmp',
+                path: 'snmp',
+                component: () => import('@/views/setting/management/snmp'),
+                meta: { title: 'SNMP配置' }
+              }
+            ]
           }
         ]
       },
-      {
-        name: 'management',
-        path: 'management',
-        component: () => import('@/views/setting/management'),
-        meta: { title: '管理配置' },
-        children: [
-          {
-            name: 'method',
-            path: 'method',
-            component: () => import('@/views/setting/management/method'),
-            meta: { title: '管理方式' }
-          },
-          {
-            name: 'creditable-host',
-            path: 'creditable-host',
-            component: () => import('@/views/setting/management/creditable-host'),
-            meta: { title: '可信主机' }
-          },
-          {
-            name: 'account',
-            path: 'account',
-            component: () => import('@/views/setting/management/account'),
-            meta: { title: '管理员账号' }
-          },
-          {
-            name: 'snmp',
-            path: 'snmp',
-            component: () => import('@/views/setting/management/snmp'),
-            meta: { title: 'SNMP配置' }
-          }
-        ]
-      }
     ]
-  },
-
-  // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  }
 ]
 
 const createRouter = () => new Router({
