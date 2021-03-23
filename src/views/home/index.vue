@@ -121,7 +121,6 @@ export default {
 @import '~@/styles/mixin.scss';
 .home {
   &-container {
-    margin: 30px;
     .row {
       margin-bottom: 24px;
       .table-in-card {
