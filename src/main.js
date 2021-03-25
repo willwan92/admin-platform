@@ -35,6 +35,7 @@ Vue.use(ElementUI, { locale })
 // Vue.use(ElementUI)
 
 Vue.prototype.moment = moment
+Vue.prototype.$ELEMENT = { size: 'medium' };
 Vue.config.productionTip = false
 
 new Vue({
