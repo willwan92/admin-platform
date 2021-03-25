@@ -10,12 +10,10 @@
         </el-form-item>
         <el-form-item>
           <el-button
-            class="button-inline"
             type="primary"
             title="同步本地时间到系统"
           >时间同步</el-button>
           <el-button
-            class="button-inline"
             @click="timeModalVisible = true"
           >修改系统时间</el-button>
         </el-form-item>
@@ -57,13 +55,8 @@
           <el-input :value="timeServerForm.ntpserver" />
         </el-form-item>
         <el-form-item>
-          <el-button
-            class="button-inline"
-            type="primary"
-          >保存设置</el-button>
-          <el-button
-            class="button-inline"
-          >立即同步</el-button>
+          <el-button type="primary">保存设置</el-button>
+          <el-button>立即同步</el-button>
         </el-form-item>
       </el-form>
     </el-card>
