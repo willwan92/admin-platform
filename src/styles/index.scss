@@ -60,6 +60,12 @@ div:focus {
 }
 
 // main-container global css
-.app-container {
-  padding: 20px;
+.app-main {
+  .el-form {
+    width: 700px;
+  }
+
+  .el-card {
+    margin-bottom: 30px;
+  }
 }
